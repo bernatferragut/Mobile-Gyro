@@ -26,8 +26,8 @@ const paneAcc = new Tweakpane({
 	container: document.getElementById('tweakpane-1')
 });
 // paneAcc.addInput(PARAMS, 'acc',{ label: 'ACCEL (X,Y)'});
-paneAcc.addMonitor(PARAMS, 'alpha', { label: 'X ACCELERATION' });
-paneAcc.addMonitor(PARAMS, 'beta', { label: 'Y ACCELERATION' });
-paneAcc.addMonitor(PARAMS, 'gamma', { label: 'Z ACCELERATION' });
+paneAcc.addMonitor(PARAMS, 'alpha', { label: 'ALPHA' });
+paneAcc.addMonitor(PARAMS, 'beta', { label: 'BETA' });
+paneAcc.addMonitor(PARAMS, 'gamma', { label: 'GAMMA' });
 
 //////////////// TWEAKPANE ////////////////
