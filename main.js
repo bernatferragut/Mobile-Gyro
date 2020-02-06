@@ -6,6 +6,8 @@ let PARAMS = {
   y : 0,
 }
 
+
+// This data will work when the mobile is used horizontally.
 if(window.DeviceOrientationEvent) {
 
   console.log("Device Orientation is supported");
