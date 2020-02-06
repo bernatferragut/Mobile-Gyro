@@ -27,7 +27,7 @@ const paneAcc = new Tweakpane({
 	container: document.getElementById('tweakpane-1')
 });
 // paneAcc.addMonitor(PARAMS, 'alpha', { label: 'ALPHA' });
-paneAcc.addMonitor(PARAMS, 'gamma', { label: 'W <-> E |  X: ' });
-paneAcc.addMonitor(PARAMS, 'beta', { label: 'N <-> S | Y: ' });
+paneAcc.addMonitor(PARAMS, 'x', { label: 'W <-> E |  X: ' });
+paneAcc.addMonitor(PARAMS, 'y', { label: 'N <-> S | Y: ' });
 
 //////////////// TWEAKPANE ////////////////
