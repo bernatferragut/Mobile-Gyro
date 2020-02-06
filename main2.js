@@ -2,7 +2,7 @@
 // ====
 
 // Global object gathering all the gyro/accelerometer data.
-gyro = {
+let gyro = {
   
     // Device orientation, not available on load but updated as soon as possible.
     orientation: null,
@@ -182,7 +182,7 @@ onorientationchange = function() {
 console.log('connected');
 
 let PARAMS = {
-    alpha : giro.alpha,
-    beta : giro.beta,
-    gamma : giro.gamma
+    alpha : gyro.alpha,
+    beta : gyro.beta,
+    gamma : gyro.gamma
 }
