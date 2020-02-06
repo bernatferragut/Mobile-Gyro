@@ -15,8 +15,8 @@ if(window.DeviceOrientationEvent) {
   window.addEventListener('deviceorientation', (eventData) => {
     // PARAMS.alpha  = eventData.alpha;
     PARAMS.x   = eventData.beta; // In degree in the range [-180,180]
-    if (x >90) { x = 90 };
-    if (x < -90) { x = -90};
+    // if (x >90) { x = 90 };
+    // if (x < -90) { x = -90};
     PARAMS.y  = eventData.gamma; // In degree in the range [-90,90]
   }, false);
 } else {
