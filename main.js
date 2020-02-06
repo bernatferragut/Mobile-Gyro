@@ -2,9 +2,8 @@
 console.log('connected');
 
 let PARAMS = {
-  alpha : 0,
-  beta : 0,
-  gamma : 0
+  x : 0,
+  y : 0,
 }
 
 if(window.DeviceOrientationEvent) {
@@ -12,9 +11,11 @@ if(window.DeviceOrientationEvent) {
   console.log("Device Orientation is supported");
 
   window.addEventListener('deviceorientation', (eventData) => {
-    PARAMS.alpha  = eventData.alpha;
-    PARAMS.beta   = eventData.beta;
-    PARAMS.gamma  = eventData.gamma;
+    // PARAMS.alpha  = eventData.alpha;
+    PARAMS.x   = eventData.beta; // In degree in the range [-180,180]
+    if (x >90) { x = 90 };
+    if (x < -90) { x = -90};
+    PARAMS.y  = eventData.gamma; // In degree in the range [-90,90]
   }, false);
 } else {
   console.log("DeviceOrientaion is NOT supported")
@@ -25,9 +26,8 @@ if(window.DeviceOrientationEvent) {
 const paneAcc = new Tweakpane({
 	container: document.getElementById('tweakpane-1')
 });
-// paneAcc.addInput(PARAMS, 'acc',{ label: 'ACCEL (X,Y)'});
-paneAcc.addMonitor(PARAMS, 'alpha', { label: 'ALPHA' });
-paneAcc.addMonitor(PARAMS, 'beta', { label: 'BETA' });
-paneAcc.addMonitor(PARAMS, 'gamma', { label: 'GAMMA' });
+// paneAcc.addMonitor(PARAMS, 'alpha', { label: 'ALPHA' });
+paneAcc.addMonitor(PARAMS, 'gamma', { label: 'W <-> E |  X: ' });
+paneAcc.addMonitor(PARAMS, 'beta', { label: 'N <-> S | Y: ' });
 
 //////////////// TWEAKPANE ////////////////
