@@ -14,11 +14,11 @@ console.log('connected');
     measurementId: "G-TBC5QYT0H4"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  // firebase.initializeApp(firebaseConfig);
   // Initialize Firestore
-  let firestore = firebase.firestore();
+  // let firestore = firebase.firestore();
   // Creating a db Reference
-  let dbRef = firestore.doc('gyroApp/data');
+  // let dbRef = firestore.doc('gyroApp/data');
 
 //////////////// DATA ////////////////
 let PARAMS = {
