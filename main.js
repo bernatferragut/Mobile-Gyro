@@ -15,6 +15,7 @@ console.log('connected');
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  // Initialize Firestore
   let firestore = firebase.firestore();
   // Creating a db Reference
   let dbRef = firestore.doc('gyroApp/data');
@@ -42,14 +43,7 @@ if(window.DeviceOrientationEvent) {
 
     // SEND PARAMS TO FIRESTORE - FIND OUT
     // sending data to firebase
-    dbRef.set({
-      x : PARAMS.x,
-      y : PARAMS.y,
-    }).then(() => {
-      console.log('data added')
-    }).catch((err) => {
-      console.log('got an error', err);
-    });
+
 
   }, false);
 } else {
