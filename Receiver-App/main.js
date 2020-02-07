@@ -14,6 +14,7 @@ let firebaseConfig = {
 };
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+let firestore = firebase.firestore();
 //////////////// FIREBASE //////////////
 
 //////////////// CONTROL PARAMS ///////////
@@ -72,7 +73,7 @@ paneAcc.addMonitor(PARAMS, 'x', { label: 'X ACCELERATION' });
 paneAcc.addMonitor(PARAMS, 'y', { label: 'Y ACCELERATION' });
 
 // panelAcc - CHANGES FROM FIREBASE
-let docRef = firebase.database().ref("data");
+let docRef = firestore.doc("gyroApp/data");
 docRef.onSnapshot((doc)=> {
 	const myData = doc.data();
 	console.log( `x:${myData.x} y:${myData.y} z:${myData.z} `);
