@@ -16,6 +16,8 @@ console.log('connected');
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   let firestore = firebase.firestore();
+  // Creating a db Reference
+  let dbRef = firestore.doc('gyroApp/data');
 
 //////////////// DATA ////////////////
 let PARAMS = {
@@ -38,7 +40,16 @@ if(window.DeviceOrientationEvent) {
     // NORTH - SOUTH ORIENTATION
     PARAMS.y  = eventData.gamma; // In degree in the range [-90,90]
 
-    // SEND PARAMS TO DB - FIND OUT
+    // SEND PARAMS TO FIRESTORE - FIND OUT
+    // sending data to firebase
+    dbRef.set({
+      x : PARAMS.x,
+      y : PARAMS.y,
+    }).then(() => {
+      console.log('data added')
+    }).catch((err) => {
+      console.log('got an error', err);
+    });
 
   }, false);
 } else {
@@ -57,18 +68,3 @@ paneAcc.addMonitor(PARAMS, 'y', { label: 'N <-> S | Y: ' });
 
 
 //////////////// TWEAKPANE ////////////////////////////////
-
-
-/////////////// FIREBASE /////////////////////////////////
-  // Creating a db Reference
-  let dbRef = firestore.doc('gyroApp/data');
-  // sending data to firebase
-  dbRef.set({
-    x : PARAMS.x,
-    y : PARAMS.y,
-  }).then(() => {
-    console.log('data added')
-  }).catch((err) => {
-    console.log('got an error', err);
-  });
-  /////////////// FIREBASE /////////////////////////////////
