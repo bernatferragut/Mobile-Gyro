@@ -45,12 +45,7 @@ if(window.DeviceOrientationEvent) {
     dbRef.set({
       x : PARAMS.x,
       y : PARAMS.y,
-    }).then(() => {
-      console.log('data added')
-    }).catch((err) => {
-      console.log('got an error', err);
     });
-
   }, false);
 } else {
   window.alert("DeviceOrientaion is NOT supported");
