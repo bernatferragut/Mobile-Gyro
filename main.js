@@ -35,8 +35,8 @@ if(window.DeviceOrientationEvent) {
   window.addEventListener('deviceorientation', (eventData) => {
     // LEFT - RIGHT ORIENTATION
     PARAMS.x   = eventData.beta; // In degree in the range [-180,180]
-    // if (x >90) { x = 90 }; 
-    // if (x < -90) { x = -90};
+    if (PARAMS.x >  90) { PARAMS.x = 90 }; 
+    if (PARAMS.x < -90) { PARAMS.x = -90};
 
     // NORTH - SOUTH ORIENTATION
     PARAMS.y  = eventData.gamma; // In degree in the range [-90,90]
