@@ -14,16 +14,16 @@ console.log('connected');
     measurementId: "G-TBC5QYT0H4"
   };
   // Initialize Firebase
-  // firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
   // Initialize Firestore
-  // let firestore = firebase.firestore();
+  let firestore = firebase.firestore();
   // Creating a db Reference
-  // let dbRef = firestore.doc('gyroApp/data');
+  let dbRef = firestore.doc('gyroApp/data');
 
 //////////////// DATA ////////////////
 let PARAMS = {
   x : 0,
-  y : 0,
+  y : 0
 }
 //////////////// DATA ////////////////
 
@@ -42,15 +42,14 @@ if(window.DeviceOrientationEvent) {
     PARAMS.y  = eventData.gamma; // In degree in the range [-90,90]
 
     // SEND PARAMS TO FIRESTORE - FIND OUT
-    // sending data to firebase
-    // dbRef.set({
-    //   x : PARAMS.x,
-    //   y : PARAMS.y,
-    // }).then(() => {
-    //   console.log('data added')
-    // }).catch((err) => {
-    //   console.log('got an error', err);
-    // });
+    dbRef.set({
+      x : PARAMS.x,
+      y : PARAMS.y,
+    }).then(() => {
+      console.log('data added')
+    }).catch((err) => {
+      console.log('got an error', err);
+    });
 
   }, false);
 } else {
