@@ -43,7 +43,14 @@ if(window.DeviceOrientationEvent) {
 
     // SEND PARAMS TO FIRESTORE - FIND OUT
     // sending data to firebase
-
+    // dbRef.set({
+    //   x : PARAMS.x,
+    //   y : PARAMS.y,
+    // }).then(() => {
+    //   console.log('data added')
+    // }).catch((err) => {
+    //   console.log('got an error', err);
+    // });
 
   }, false);
 } else {
@@ -56,7 +63,7 @@ if(window.DeviceOrientationEvent) {
 const paneAcc = new Tweakpane({
 	container: document.getElementById('tweakpane-1')
 });
-paneAcc.addMonitor(PARAMS, 'x', { label: 'W <-> E |  X: ' });
+paneAcc.addMonitor(PARAMS, 'x', { label: 'W <-> E | X: ' });
 paneAcc.addMonitor(PARAMS, 'y', { label: 'N <-> S | Y: ' });
 // TWEAKPANE - BUTTONS
 
