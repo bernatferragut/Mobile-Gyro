@@ -133,7 +133,7 @@ let frame, mx, my;
 			// Draw axis
 			brush.drawAxis(mx, my, w, h);
 		}
-	}
+	}x
 
 	// Loop
 	frame = requestAnimationFrame(loop);
