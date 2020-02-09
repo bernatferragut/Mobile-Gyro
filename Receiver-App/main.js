@@ -77,6 +77,7 @@ let docRef = firestore.doc("gyroApp/data");
 docRef.onSnapshot((doc)=> {
 	const myData = doc.data();
 	console.log( `x:${myData.x} y:${myData.y} z:${myData.z} `);
+	console.log( `dot:${myData.dot} lineWidth:${myData.lineWidth} lineColor:${myData.lineColor}`);
 })
 
 
