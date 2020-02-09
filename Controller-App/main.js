@@ -107,6 +107,44 @@ paneAcc.addMonitor(PARAMS, 'x', { label: 'X: ' });
 paneAcc.addSeparator();
 paneAcc.addMonitor(PARAMS, 'y', { label: 'Y: ' });
 
+// TWEAKPANE - LINE
+// LINE ON/OFF
+const paneLineOnOff = new Tweakpane({
+	container: document.getElementById('tweakpane-3')
+});
+paneLineOnOff.addInput(PARAMS, 'line', { label: 'LINE' });
+paneLineOnOff.on('change', (value) => {
+  console.log('paneLineOnOff: ', value);
+  dbRef.set({
+    line : PARAMS.line,
+  });
+});
+// LINE SIZE
+const paneLineSize = new Tweakpane({
+	container: document.getElementById('tweakpane-3')
+});
+paneLineSize.addInput(PARAMS, 'lineWidth', {
+	min: 0,
+	max: 3,
+	label: 'WIDTH'
+});
+paneLineSize.on('change', (value) => {
+  console.log('lineSize: ', value);
+  dbRef.set({
+    lineWidth : PARAMS.lineWidth,
+  });
+});
+// DOT COLOR
+const paneLineColor = new Tweakpane({
+	container: document.getElementById('tweakpane-3')
+});
+paneLineColor.addInput(PARAMS, 'lineColor', { label: 'COLOR' });
+paneLineColor.on('change', (value) => {
+  console.log('linwColor: ', value);
+  dbRef.set({
+    lineColor : PARAMS.lineColor,
+  });
+});
 
 
 

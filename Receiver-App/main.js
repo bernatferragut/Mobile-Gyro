@@ -76,8 +76,9 @@ paneAcc.addMonitor(PARAMS, 'y', { label: 'Y ACCELERATION' });
 let docRef = firestore.doc("gyroApp/data");
 docRef.onSnapshot((doc)=> {
 	const myData = doc.data();
+	console.log( `dot:${myData.dot} dotWidth:${myData.dotWidth} dotColor:${myData.dotColor}`);
 	console.log( `x:${myData.x} y:${myData.y} z:${myData.z} `);
-	console.log( `dot:${myData.dot} lineWidth:${myData.lineWidth} lineColor:${myData.lineColor}`);
+	console.log( `line:${myData.dot} lineWidth:${myData.lineWidth} lineColor:${myData.lineColor}`);
 })
 
 
