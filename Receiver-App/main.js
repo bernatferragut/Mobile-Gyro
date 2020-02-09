@@ -77,8 +77,17 @@ let docRef = firestore.doc("gyroApp/data");
 docRef.onSnapshot((doc)=> {
 	const myData = doc.data();
 	console.log( `dot:${myData.dot} dotWidth:${myData.dotWidth} dotColor:${myData.dotColor}`);
+	PARAMS.dot = myData.dot;
+	PARAMS.dotWidth = myData.dotWidth;
+	PARAMS.dotColor = myData.dotColor;
 	console.log( `x:${myData.x} y:${myData.y} z:${myData.z} `);
+	PARAMS.x = myData.x;
+	PARAMS.y = myData.y;
+	PARAMS.dotColor = myData.dotColor;
 	console.log( `line:${myData.dot} lineWidth:${myData.lineWidth} lineColor:${myData.lineColor}`);
+	PARAMS.line = myData.line;
+	PARAMS.lineWidth = myData.lineWidth;
+	PARAMS.lineColor = myData.lineColor;
 })
 
 
@@ -134,15 +143,15 @@ let frame, mx, my;
 	if (isPaired) {
 		if (PARAMS.dot === true) {
 			// Drawing Dot
-			mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-			my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+			mx = brush.mapValues(PARAMS.x, -90, 90, 0, w);
+			my = brush.mapValues(PARAMS.y, -90, 90, 0, h);
 			brush.drawDot(mx, my, PARAMS.dotWidth, PARAMS.dotColor);
 
 			// dot drawing
 		} else if (PARAMS.line === true) {
 			// Drawing Line
-			mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-			my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+			mx = brush.mapValues(PARAMS.x, -90, 90, 0, w);
+			my = brush.mapValues(PARAMS.y, -90, 90, 0, h);
 			brush.drawLine(mx, my, PARAMS.lineWidth, PARAMS.lineColor);
 			// allows to start path from here without jumping
 			// ctx.beginPath();
@@ -150,8 +159,8 @@ let frame, mx, my;
 			// nothing drawing
 			ctx.clearRect(0, 0, w, h);
 			// Drawing Axist
-			mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-			my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+			mx = brush.mapValues(PARAMS.x, -90, 90, 0, w);
+			my = brush.mapValues(PARAMS.y, -90, 90, 0, h);
 			// Draw axis
 			brush.drawAxis(mx, my, w, h);
 		}
