@@ -24,6 +24,12 @@ console.log('connected');
 let PARAMS = {
 	x: 0,
 	y: 0,
+	line: false,
+	lineWidth: 0.1,
+	lineColor: '#9acd32',
+	dot: false,
+	dotWidth: 0.25,
+	dotColor: '#ff6347'
 };
 //////////////// DATA ////////////////
 
@@ -53,6 +59,44 @@ if(window.DeviceOrientationEvent) {
 //////////////// DEVICE ORIENTATION WINDOW EVENT ////////////////
 
 //////////////// TWEAKPANE ////////////////////////////////
+// TWEAKPANE - DOT
+// DOT ON/OFF
+const paneDotOnOff = new Tweakpane({
+	container: document.getElementById('tweakpane-1')
+});
+paneDotOnOff.addInput(PARAMS, 'dot', { label: 'DOT' });
+paneDotOnOff.on('change', (value) => {
+  console.log('paneDotOnOff: ', value);
+  dbRef.set({
+    dot : PARAMS.dot,
+  });
+});
+// DOT SIZE
+const paneDotSize = new Tweakpane({
+	container: document.getElementById('tweakpane-1')
+});
+paneDotSize.addInput(PARAMS, 'dotWidth', {
+	min: 0,
+	max: 3,
+	label: 'WIDTH'
+});
+paneDotSize.on('change', (value) => {
+  console.log('paneDotSize: ', value);
+  dbRef.set({
+    dotWidth : PARAMS.dotWidth,
+  });
+});
+// DOT COLOR
+const paneDotColor = new Tweakpane({
+	container: document.getElementById('tweakpane-1')
+});
+paneDotColor.addInput(PARAMS, 'dotColor', { label: 'COLOR' });
+paneDotColor.on('change', (value) => {
+  console.log('dotColor: ', value);
+  dbRef.set({
+    dotColor : PARAMS.dotColor,
+  });
+});
 
 // TWEAKPANE - MONITOR - ACCELEROMETER
 const paneAcc = new Tweakpane({
@@ -62,5 +106,46 @@ const paneAcc = new Tweakpane({
 paneAcc.addMonitor(PARAMS, 'x', { label: 'X: ' });
 paneAcc.addSeparator();
 paneAcc.addMonitor(PARAMS, 'y', { label: 'Y: ' });
+
+// TWEAKPANE - LINE
+// LINE ON/OFF
+const paneLineOnOff = new Tweakpane({
+	container: document.getElementById('tweakpane-3')
+});
+paneLineOnOff.addInput(PARAMS, 'line', { label: 'LINE' });
+paneLineOnOff.on('change', (value) => {
+  console.log('paneLineOnOff: ', value);
+  dbRef.set({
+    line : PARAMS.line,
+  });
+});
+// LINE SIZE
+const paneLineSize = new Tweakpane({
+	container: document.getElementById('tweakpane-3')
+});
+paneLineSize.addInput(PARAMS, 'lineWidth', {
+	min: 0,
+	max: 3,
+	label: 'WIDTH'
+});
+paneLineSize.on('change', (value) => {
+  console.log('lineSize: ', value);
+  dbRef.set({
+    lineWidth : PARAMS.lineWidth,
+  });
+});
+// DOT COLOR
+const paneLineColor = new Tweakpane({
+	container: document.getElementById('tweakpane-3')
+});
+paneLineColor.addInput(PARAMS, 'lineColor', { label: 'COLOR' });
+paneLineColor.on('change', (value) => {
+  console.log('linwColor: ', value);
+  dbRef.set({
+    lineColor : PARAMS.lineColor,
+  });
+});
+
+
 
 //////////////// TWEAKPANE ////////////////////////////////

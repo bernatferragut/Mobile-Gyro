@@ -15,6 +15,7 @@ let firebaseConfig = {
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 let firestore = firebase.firestore();
+let isPaired = true;
 //////////////// FIREBASE //////////////
 
 //////////////// CONTROL PARAMS ///////////
@@ -102,29 +103,6 @@ paneAcc
 	});
 //////////////// TWEAKPANE ////////////////
 
-//////////////// MICROBIT PAIRING /////////
-const pairBtn = document.querySelector('.btn');
-pairBtn.addEventListener('click', microbitPairing);
-let microbit = new uBit();
-let isPaired = false;
-
-function microbitPairing() {
-	//1.search
-	microbit.searchDevice();
-	//2.connect
-	microbit.onConnect(() => {
-		isPaired = true;
-		console.log('isPpared: ', isPaired);
-	});
-	//3.ble subscription
-	microbit.onBleNotify(function() {
-		PARAMS.x = microbit.getAccelerometer().x;
-		PARAMS.y = microbit.getAccelerometer().y;
-	});
-	//4. button disappear
-	pairBtn.disabled = true;
-}
-//////////////// MICROBIT PAIRING /////////
 
 //////////////// CANVAS ///////////////////
 const canvas = document.querySelector('#canvas');
